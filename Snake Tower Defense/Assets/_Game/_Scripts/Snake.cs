@@ -7,7 +7,6 @@ public class Snake : MonoBehaviour
     List<Transform> _segments = new List<Transform>();
     public Transform SegmentPrefab;
     public int InitialSize = 1;
-    float timer = 0f;
 
     private void Start()
     {
@@ -27,10 +26,6 @@ public class Snake : MonoBehaviour
 
         _direction = newDirection;
         //normal direction
-
-        timer += Time.deltaTime;
-        int seconds = (int)(timer % 60);
-        Debug.Log(seconds);
     }
 
     private void FixedUpdate()
