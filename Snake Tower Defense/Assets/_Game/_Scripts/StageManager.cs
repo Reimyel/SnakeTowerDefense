@@ -5,7 +5,7 @@ public class StageManager : MonoBehaviour
 {
     float _timer = 0f;
     public TextMeshProUGUI StageText;
-    public float StageSwitchTime = 15f;
+    public int StageSwitchTime = 15;
     public GameObject EndStageButton;
     Snake _snakeScript;
     bool _enteredTowerDefenseStage = false;
@@ -21,13 +21,14 @@ public class StageManager : MonoBehaviour
         else
         {
             _timer += Time.deltaTime;
-            float seconds = (_timer % 60);
+            int seconds = (int)_timer;
 
-            StageText.text = seconds.ToString(); //F1, F2, F3 etc can be used to restrict floats to decimals
-
-            if (seconds >= StageSwitchTime && !_enteredTowerDefenseStage)
+            StageText.text = seconds.ToString();
+            
+            if (Mathf.Approximately(seconds, StageSwitchTime) && !_enteredTowerDefenseStage)
             {
                 EnterTowerDefenseStage();
+                Debug.Log("defesa");
             }
         }
     }
